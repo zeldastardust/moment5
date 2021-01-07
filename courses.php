@@ -61,6 +61,12 @@ switch ($method) {
 
             // show products data in json format
             echo json_encode($course_arr);
+        }else{
+             // set response code - 404 Not found
+             http_response_code(404);
+
+             // tell the user product does not exist
+             echo json_encode(array("message" => "courses does not exist."));
         }
 
         // set ID property of record to read
@@ -88,8 +94,8 @@ switch ($method) {
             // set response code - 404 Not found
             http_response_code(404);
 
-            // tell the user product does not exist
-            echo json_encode(array("message" => "course does not exist."));
+            // tell the user courses does not exist
+            echo json_encode(array("message" => "courses does not exist."));
         }
 
         break;

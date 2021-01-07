@@ -3,17 +3,17 @@
 class Database
 {
 
-    /*private $host = "localhost";
+    private $host = "localhost";
     private $db_name = "courselist";
     private $username = "courseList";
     private $password = "password";
-    public $conn;*/
+    public $conn;
 
-    private $host = "studentmysql.miun.se";
+    /*private $host = "studentmysql.miun.se";
     private $db_name = "mali1910";
     private $username = "mali1910";
     private $password = "18xu8adm";
-    public $conn;
+    public $conn;*/
 
 
     // get the database connection

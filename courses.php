@@ -11,9 +11,13 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 $method = $_SERVER['REQUEST_METHOD'];
 //if id is in url
-if (isset($_GET['id'])) {
+/*if (isset($_GET['id'])) {
     $id = $_GET['id'];
-}
+}*/
+if(isset($_GET['id'])) {
+    $id = $_GET['id'] != '' ? $_GET['id'] : null;
+ }
+ 
 
 // get database connection
 $database = new Database();
@@ -37,8 +41,7 @@ switch ($method) {
             $course_arr["records"] = array();
 
             // retrieve our table contents
-            // fetch() is faster than fetchAll()
-            // http://stackoverflow.com/questions/2770630/pdofetchall-vs-pdofetch-in-a-loop
+            
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 // extract row
                 // this will make $row['name'] to
@@ -75,7 +78,7 @@ switch ($method) {
         // read the details of product to be edited
         $courses->readOne($id);
 
-        if ($courses->code != null) {
+        if ($courses->name != null) {
             // create array
             $course_arr = array(
                 "id" =>  $courses->id,
@@ -95,7 +98,7 @@ switch ($method) {
             http_response_code(404);
 
             // tell the user courses does not exist
-            echo json_encode(array("message" => "courses does not exist."));
+            echo json_encode(array("message" => "course does not exist."));
         }
 
         break;

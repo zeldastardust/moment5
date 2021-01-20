@@ -75,8 +75,8 @@ switch ($method) {
         // set ID property of record to read
         $courses->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-        // read the details of product to be edited
-        $courses->readOne($id);
+        // read the details of education 
+        $courses->readOne();
 
         if ($courses->name != null) {
             // create array

@@ -18,7 +18,7 @@ class Courses{
     public function __construct($db){
         $this->conn = $db;
     }
-    // read products
+    // read educations
 function read(){
  
     // select all query
@@ -70,17 +70,17 @@ function create(){
      
 }
 // used when filling up the update product form
-function readOne($id){
+function readOne(){
  
     // query to read single record
     $query = "SELECT
                 id, code, name,progression, syllabus 
             FROM
-                " . $this->table_name . " c
+                " . $this->table_name . " 
             WHERE
-                id = $id
-                LIMIT 1";
-            
+                id = ?";
+               
+                var_dump($query);
  
     // prepare query statement
     $stmt = $this->conn->prepare( $query );
@@ -99,6 +99,11 @@ function readOne($id){
     $this->name = $row['name'];
     $this->progression = $row['progression'];
     $this->syllabus = $row['syllabus'];
+    //if(!$row) {
+       // $row = array();
+     //}
+
+     return $row;
 
 }
 // update the edu
